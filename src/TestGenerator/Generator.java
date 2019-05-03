@@ -13,12 +13,12 @@ import java.security.Security;
 
 import uniandes.gload.core.LoadGenerator;
 import uniandes.gload.core.Task;
-import uniandes.gload.examples.clientserver.generator.ClientServerTask;
+
 
 public class Generator {
 
 	private LoadGenerator generator;
-	private ClientServerTask work;
+	private ClienteServerTask work;
 	
 	
 	//TODO CAMBIO DE CODIGO ---
@@ -34,9 +34,9 @@ public class Generator {
 		generator.generate();
 	}
 	
-	private ClientServerTask createTask(){
+	private ClienteServerTask createTask(){
 		System.out.println("nueva tarea");
-		return new ClientServerTask();
+		return new ClienteServerTask();
 	}
 	
 	//TODO CAMBIO DE CODIGO ---
