@@ -20,7 +20,7 @@ public class C {
 	 */
 	public static void main(String[] args) throws Exception{
 		// TODO Auto-generated method stub
-		int numeroThreads=10;
+		int numeroThreads=1;
 		System.out.println(MAESTRO + "Establezca puerto de conexion:");
 		InputStreamReader isr = new InputStreamReader(System.in);
 		BufferedReader br = new BufferedReader(isr);
@@ -38,7 +38,9 @@ public class C {
 		keyPairServidor = S.grsa();
 		certSer = S.gc(keyPairServidor);
 		D.initCertificate(certSer, keyPairServidor);
-		while (idThread<numeroThreads) {
+		while (true) {
+			idThread=0;
+			while(idThread<numeroThreads)
 			try { 
 				Socket sc = ss.accept();
 				System.out.println(MAESTRO + "Cliente " + idThread + " aceptado.");
