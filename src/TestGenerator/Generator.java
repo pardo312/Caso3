@@ -32,10 +32,12 @@ public class Generator {
 		work.getReady(writer,Integer.parseInt(tasks), Integer.parseInt(gbt), 8083, linea );
 		generator = new LoadGenerator("Client - Server Load Test", Integer.parseInt(tasks), work, Integer.parseInt(gbt));
 		generator.generate();
+		System.out.println("-----------------------------------");
+		 System.out.println("Fallos Ocurridos" + work.contFail);
 	}
 	
 	private ClienteServerTask createTask(){
-		System.out.println("nueva tarea");
+		System.out.println("Nueva tarea");
 		return new ClienteServerTask();
 	}
 	

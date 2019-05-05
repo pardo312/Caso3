@@ -53,6 +53,8 @@ import org.bouncycastle.operator.jcajce.JcaContentSignerBuilder;
 import org.bouncycastle.util.io.pem.PemObject;
 import org.bouncycastle.util.io.pem.PemWriter;
 
+import TestGenerator.ClienteServerTask;
+
 
 public class Cliente {
 	
@@ -213,6 +215,7 @@ public class Cliente {
 	
 	//TODO CAMBIO DE CODIGO ---
 	public void executeProtocol() throws Exception{
+		
 		String serverAns = "OK";
 		
 		//System.out.println("CLIENTE: HOLA");
@@ -316,7 +319,7 @@ public class Cliente {
 		try{
 			Security.addProvider(new org.bouncycastle.jce.provider.BouncyCastleProvider());
 
-			Cliente ivan = new Cliente("LocalHost", 8083, 8);
+			Cliente ivan = new Cliente("localhost", 8083, 8);
 			ivan.executeProtocol();
 		}
 		catch(Exception e){

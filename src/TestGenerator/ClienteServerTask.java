@@ -14,6 +14,7 @@ public class ClienteServerTask
   private static int id = 0;
  Cliente client;
   int tasks;
+  static int contFail = 0;
   int gbt;
   int puerto;
   String linea;
@@ -21,11 +22,13 @@ public class ClienteServerTask
   
   public void fail()
   {
+	  contFail++;
     System.out.println("FAIL_TEST");
   }
   
   public void success()
   {
+	  
     System.out.println("OK_TEST" + id);
   }
   
@@ -46,6 +49,7 @@ public class ClienteServerTask
       
       this.client.getReady(this.linea, this.writer);
       this.client.executeProtocol();
+      System.out.println("FAIL_TEST" + contFail);
     }
     catch (Exception e)
     {
