@@ -239,17 +239,15 @@ public class Cliente {
 			serverAns = readServerAns(serverAns);
 			
 			//RECIBE CERTIFICADO DE SERVIDOR
-			serverAns = readServerAns(serverAns);
+			
 			String certificate = serverAns;
 			out.println("OK"); 
 			
 			// AQUÍ EMPIEZA FASE DE TIEMPO DE VERIFICACION
 			double verTimeBegin = System.currentTimeMillis();
-			serverAns = readServerAns(serverAns);	
+				
 			
-			//Envia la llave simetrica de vuelta
-			decodeSimetricKey(serverAns, certificate);
-			serverAns = readServerAns(serverAns);
+			
 			//TODO CAMBIO DE CODIGO
 			double timeRecorded = System.currentTimeMillis() - verTimeBegin;
 			double cpuVer = getSystemCpuLoad();

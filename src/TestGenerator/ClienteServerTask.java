@@ -49,7 +49,6 @@ public class ClienteServerTask
       
       this.client.getReady(this.linea, this.writer);
       this.client.executeProtocol();
-      System.out.println("FAIL_TEST" + contFail);
     }
     catch (Exception e)
     {

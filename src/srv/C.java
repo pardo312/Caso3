@@ -20,7 +20,7 @@ public class C {
 	private static final String MAESTRO = "MAESTRO: ";
 	private static X509Certificate certSer; /* acceso default */
 	private static KeyPair keyPairServidor; /* acceso default */
-	
+	static double promedio = 0;
 	/**
 	 * @param args
 	 */
@@ -61,6 +61,7 @@ public class C {
 				System.out.println(MAESTRO + "Error creando el socket cliente.");
 				e.printStackTrace();
 			}
+			promedio = suma/contador;
 			System.out.println("Promedio: "+suma/contador);
 		}
 		

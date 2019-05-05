@@ -7,9 +7,15 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.lang.management.ManagementFactory;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.security.Security;
+
+import javax.management.Attribute;
+import javax.management.AttributeList;
+import javax.management.MBeanServer;
+import javax.management.ObjectName;
 
 import uniandes.gload.core.LoadGenerator;
 import uniandes.gload.core.Task;
@@ -49,7 +55,9 @@ public class Generator {
 			String gbtS = String.valueOf(gbt);
 			File testFile = new File("./data/test_nTh-"+ nThreads +"_T-" + tasks +"_GBT-" + gbt+ "_SS.csv");
 			writer = new BufferedWriter(new FileWriter(testFile));
-			writer.write("Num;Threads;Carga;GBT;TiempoVer;CPU;TiempoResp;" + "\n");
+			writer.write("Num;Threads;Carga;GBT;CPU;TiempoResp;" + "\n");
+				
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -104,4 +112,16 @@ public class Generator {
 		}
 		
 	}
+	public static double getSystemCpuLoad() throws Exception {
+		 MBeanServer mbs = ManagementFactory.getPlatformMBeanServer();
+		 ObjectName name = ObjectName.getInstance("java.lang:type=OperatingSystem");
+		 AttributeList list = mbs.getAttributes(name, new String[]{ "SystemCpuLoad" });
+		 if (list.isEmpty()) return Double.NaN;
+		 Attribute att = (Attribute)list.get(0);
+		 Double value = (Double)att.getValue();
+		 // usually takes a couple of seconds before we get real values
+		 if (value == -1.0) return Double.NaN;
+		 // returns a percentage value with 1 decimal point precision
+		 return ((int)(value * 1000) / 10.0);
+		 }
 }
